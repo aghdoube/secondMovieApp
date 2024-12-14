@@ -1,9 +1,10 @@
 import React from "react";
-import "../Styles/SideMenu.css";
+import { Link } from "react-router-dom";
 import netflixLogo from "../assets/netflix.png";
 import primeLogo from "../assets/prime.png";
 import youtubeLogo from "../assets/youtube.png";
 import tvLogo from "../assets/tv.png";
+import "../Styles/SideMenu.css";
 
 const SideMenu = () => {
   return (
@@ -15,24 +16,24 @@ const SideMenu = () => {
           </a>
           <ul>
             <li>
-              <a>
+              <Link to="/">
                 <i className="fas fa-home" style={{ color: "red" }}></i> Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link to="/discovery">
                 <i className="fas fa-search"></i> Discovery
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link to="/community">
                 <i className="fas fa-users"></i> Community
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link to="/coming-soon">
                 <i className="fas fa-calendar-alt"></i> Coming soon
-              </a>
+              </Link>
             </li>
           </ul>
         </li>
@@ -43,24 +44,24 @@ const SideMenu = () => {
           </a>
           <ul>
             <li>
-              <a>
+              <Link to="/recent">
                 <i className="fas fa-clock"></i> Recent
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link to="/bookmarked">
                 <i className="fas fa-bookmark"></i> Bookmarked
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link to="/top-rated">
                 <i className="fas fa-star"></i> Top rated
-              </a>
+              </Link>
             </li>
             <li>
-              <a>
+              <Link to="/downloaded">
                 <i className="fas fa-download"></i> Downloaded
-              </a>
+              </Link>
             </li>
           </ul>
         </li>
@@ -108,18 +109,14 @@ const SideMenu = () => {
         </li>
         <hr />
         <li>
-          <ul>
-            <li>
-              <a>
-                <i className="fas fa-cog"></i> Settings
-              </a>
-            </li>
-            <li>
-              <a>
-                <i className="fas fa-question-circle"></i> Help
-              </a>
-            </li>
-          </ul>
+          <Link to="/settings">
+            <i className="fas fa-cog"></i> Settings
+          </Link>
+        </li>
+        <li>
+          <Link to="/help">
+            <i className="fas fa-question-circle"></i> Help
+          </Link>
         </li>
       </ul>
     </nav>

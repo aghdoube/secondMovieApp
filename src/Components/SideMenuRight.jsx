@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Styles/SideMenuRight.css";
 import "../Styles/Hero.css";
 import netflixLogo from "../assets/netflix.png";
@@ -12,6 +13,13 @@ import TopRated from "./TopRated";
 import Download from "./Download";
 
 const SideMenuRight = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    navigate(`/discovery?query=${searchQuery}`);
+  };
+
   return (
     <nav className="side-menu-right">
       <ul className="menu-right bg-base-200 rounded-box">
@@ -26,11 +34,13 @@ const SideMenuRight = () => {
               <input
                 className="input input-bordered w-full"
                 type="text"
-                placeholder="Comedy "
+                placeholder="Comedy"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
             <li>
-              <a>
+              <a onClick={handleSearch}>
                 <i className="fas fa-search"></i> Search
               </a>
             </li>

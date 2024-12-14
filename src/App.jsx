@@ -1,28 +1,24 @@
-import "izitoast/dist/css/iziToast.min.css";
-import iziToast from "izitoast";
-import NavBar from "./Components/NavBar";
-import Cards from "./Components/Cards";
-import "./Styles/index.css";
-import "./Styles/App.css";
-import Hero from "./Components/Hero";
-import Badge from "./Components/Badge";
-import Carousel from "./Components/Carousel";
-import Menu from "./Components/SideMenu";
-import MenuRight from "./Components/SideMenuRight";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Movies from "./Pages/views/Movies";
+import Series from "./Pages/views/Series";
+import TVShows from "./Pages/views/TVShows";
+import Discovery from "./Pages/SubPages/Discovery";
 
 function App() {
   return (
-    <>
+    <Router>
       <div>
-        <NavBar />
-        <Menu />
-        <MenuRight />
-        <Hero />
-        <Carousel />
-        <Badge />
-        <Cards />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/series" element={<Series />} />
+          <Route path="/tv-shows" element={<TVShows />} />
+          <Route path="/discovery" element={<Discovery />} />
+        </Routes>
       </div>
-    </>
+    </Router>
   );
 }
 
