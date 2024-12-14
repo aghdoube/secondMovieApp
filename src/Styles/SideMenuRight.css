@@ -1,0 +1,108 @@
+.side-menu-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100%;
+  background-color: #1a171e;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.menu-right {
+  background-color: #1a171e;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-text a {
+  color: white;
+}
+
+.menu-right li {
+  margin-bottom: 10px;
+}
+
+.menu-right a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.menu-right a:hover {
+  background-color: #ddd;
+  color: #1a171e;
+}
+
+.menu-right ul {
+  list-style: none;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.menu-right hr {
+  border: 0;
+  height: 1px;
+  background: #ddd;
+  margin: 10px 0;
+}
+
+.streaming-service {
+  display: flex;
+  align-items: center;
+}
+
+.streaming-logo {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.login-card {
+  background-color: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.name-and-email {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 18px;
+  margin: 0;
+  color: white;
+}
+
+.email {
+  color: white;
+  font-size: 14px;
+  margin: 0;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  color: rgb(18, 153, 63);
+}
