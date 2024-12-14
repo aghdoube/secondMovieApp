@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import Cards from "../../Components/Cards";
@@ -8,14 +8,24 @@ const Discovery = () => {
   const navigate = useNavigate();
   const query = new URLSearchParams(location.search).get("query");
   const [searchQuery, setSearchQuery] = useState(query || "");
-  const API_KEY = "7ba540e3fb9bd1f5b64d17ed22e1efdc";
+  const [searchApiEndpoint, setSearchApiEndpoint] = useState()
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  const url_base = import.meta.env.VITE_BASE_URL
 
-  const searchApiEndpoint = query
-    ? `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}`
-    : "";
+  useEffect(() => {
+    let load = true
+    if (load) {
+      query ? setSearchApiEndpoint(`${url_base}/search/movie?query=${query}&api_key=${API_KEY}`) :
+        setSearchApiEndpoint(`${url_base}/search/movie?api_key=${API_KEY}`);
+      load = false
+    }
+  }, [])
+
 
   const handleSearch = () => {
-    navigate(`/discovery?query=${searchQuery}`);
+    if (searchQuery) {
+      navigate(`/discovery?query=${searchQuery}`);
+    }
   };
 
   return (
@@ -35,9 +45,9 @@ const Discovery = () => {
               Search
             </button>
           </div>
-          {query && (
+          {searchQuery && (
             <div className="mt-4">
-              <p className="text-lg">Search results for: {query}</p>
+              <p className="text-lg">Search results for: {searchQuery}</p>
               <Cards apiEndpoint={searchApiEndpoint} />
             </div>
           )}

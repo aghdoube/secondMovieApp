@@ -3,7 +3,8 @@ import Layout from "../Layout/Layout";
 import Cards from "../../Components/Cards";
 
 const Movies = () => {
-  const moviesApiEndpoint = "https://api.themoviedb.org/3/movie/popular";
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  const moviesApiEndpoint = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
 
   return (
     <Layout>

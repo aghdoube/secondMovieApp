@@ -5,7 +5,8 @@ import SideMenuRight from "../../Components/SideMenuRight";
 import Cards from "../../Components/Cards";
 
 const TVShows = () => {
-  const tvShowsApiEndpoint = "https://api.themoviedb.org/3/tv/top_rated";
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  const tvShowsApiEndpoint = `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}`;
 
   return (
     <div>

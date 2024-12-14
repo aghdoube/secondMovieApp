@@ -21,7 +21,7 @@ function Home() {
         <Hero />
         <Carousel />
         <Badge />
-        <Cards />
+        <Cards apiEndpoint='https://api.themoviedb.org/3/search/movie' />
       </div>
     </>
   );

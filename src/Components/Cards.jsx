@@ -12,7 +12,7 @@ const Cards = ({ apiEndpoint }) => {
         if (!apiEndpoint) {
           throw new Error("API endpoint is not defined");
         }
-        const fullApiEndpoint = `${apiEndpoint}?api_key=${API_KEY}`;
+        const fullApiEndpoint = `${apiEndpoint}`;
         console.log(`Fetching data from: ${fullApiEndpoint}`);
         const response = await fetch(fullApiEndpoint);
         if (!response.ok) {
