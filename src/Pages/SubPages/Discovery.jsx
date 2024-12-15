@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import Cards from "../../Components/Cards";
@@ -8,24 +8,20 @@ const Discovery = () => {
   const navigate = useNavigate();
   const query = new URLSearchParams(location.search).get("query");
   const [searchQuery, setSearchQuery] = useState(query || "");
-  const [searchApiEndpoint, setSearchApiEndpoint] = useState()
   const API_KEY = import.meta.env.VITE_API_KEY;
-  const url_base = import.meta.env.VITE_BASE_URL
+  const URL_BASE = import.meta.env.VITE_BASE_URL;
 
-  useEffect(() => {
-    let load = true
-    if (load) {
-      query ? setSearchApiEndpoint(`${url_base}/search/movie?query=${query}&api_key=${API_KEY}`) :
-        setSearchApiEndpoint(`${url_base}/search/movie?api_key=${API_KEY}`);
-      load = false
-    }
-  }, [])
+  const searchApiEndpoint = query
+    ? `${URL_BASE}/search/movie?query=${query}&api_key=${API_KEY}`
+    : "";
 
+  console.log("Current query:", query);
+  console.log("Search query state:", searchQuery);
+  console.log("Search API Endpoint:", searchApiEndpoint);
 
   const handleSearch = () => {
-    if (searchQuery) {
-      navigate(`/discovery?query=${searchQuery}`);
-    }
+    console.log("Navigating to:", `/discovery?query=${searchQuery}`);
+    navigate(`/discovery?query=${searchQuery}`);
   };
 
   return (
@@ -39,15 +35,18 @@ const Discovery = () => {
               type="text"
               placeholder="Search"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                console.log("Updated search query:", e.target.value);
+              }}
             />
             <button className="btn btn-primary" onClick={handleSearch}>
               Search
             </button>
           </div>
-          {searchQuery && (
+          {query && (
             <div className="mt-4">
-              <p className="text-lg">Search results for: {searchQuery}</p>
+              <p className="text-lg">Search results for: {query}</p>
               <Cards apiEndpoint={searchApiEndpoint} />
             </div>
           )}

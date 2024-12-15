@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/SideMenuRight.css";
 import "../Styles/Hero.css";
-import netflixLogo from "../assets/netflix.png";
-import primeLogo from "../assets/prime.png";
-import youtubeLogo from "../assets/youtube.png";
-import tvLogo from "../assets/tv.png";
+
 import Trailer from "./Trailer";
-import Genre from "./Genre";
+
 import Bookmarked from "./Bookmarked";
 import TopRated from "./TopRated";
 import Download from "./Download";
@@ -47,10 +44,7 @@ const SideMenuRight = () => {
           </ul>
         </li>
         <hr />
-        <li>
-          <Genre />
-        </li>
-        <hr />
+
         <li>
           <a>
             <i className="fas fa-book"></i> NEW TRAILERS
@@ -59,14 +53,7 @@ const SideMenuRight = () => {
             <li>
               <Trailer />
             </li>
-            <li>
-              <a>
-                <i className="fas fa-bookmark"></i> BOOKMARKED
-              </a>
-            </li>
-            <li>
-              <Bookmarked />
-            </li>
+
             <li>
               <a>
                 <i className="fas fa-star"></i> TOP RATED
@@ -82,63 +69,6 @@ const SideMenuRight = () => {
             </li>
             <li>
               <Download />
-            </li>
-          </ul>
-        </li>
-        <hr />
-        <li>
-          <a>Streaming Services</a>
-          <ul>
-            <li>
-              <a href="#" className="streaming-service">
-                <img
-                  src={netflixLogo}
-                  alt="Netflix"
-                  className="streaming-logo"
-                />
-                Netflix
-              </a>
-            </li>
-            <li>
-              <a href="#" className="streaming-service">
-                <img
-                  src={youtubeLogo}
-                  alt="Youtube"
-                  className="streaming-logo"
-                />
-                Youtube
-              </a>
-            </li>
-            <li>
-              <a href="#" className="streaming-service">
-                <img
-                  src={primeLogo}
-                  alt="Amazon Prime"
-                  className="streaming-logo"
-                />
-                Amazon Prime
-              </a>
-            </li>
-            <li>
-              <a href="#" className="streaming-service">
-                <img src={tvLogo} alt="AppleTv" className="streaming-logo" />
-                AppleTv
-              </a>
-            </li>
-          </ul>
-        </li>
-        <hr />
-        <li>
-          <ul>
-            <li>
-              <a>
-                <i className="fas fa-cog"></i> Settings
-              </a>
-            </li>
-            <li>
-              <a>
-                <i className="fas fa-question-circle"></i> Help
-              </a>
             </li>
           </ul>
         </li>

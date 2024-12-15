@@ -4,7 +4,7 @@ import "../Styles/Cards.css";
 const Cards = ({ apiEndpoint }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const API_KEY = "7ba540e3fb9bd1f5b64d17ed22e1efdc";
+  const BEARER_TOKEN = import.meta.env.VITE_TMDB_BEARER_TOKEN;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,15 +12,24 @@ const Cards = ({ apiEndpoint }) => {
         if (!apiEndpoint) {
           throw new Error("API endpoint is not defined");
         }
-        const fullApiEndpoint = `${apiEndpoint}`;
-        console.log(`Fetching data from: ${fullApiEndpoint}`);
-        const response = await fetch(fullApiEndpoint);
+        console.log(`Fetching data from: ${apiEndpoint}`);
+        const response = await fetch(apiEndpoint, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${BEARER_TOKEN}`,
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
         if (!response.ok) {
+          // Try to get more error details
+          const errorText = await response.text();
+          console.error(`HTTP error! status: ${response.status}`, errorText);
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const result = await response.json();
         console.log("Fetched data:", result);
-        setData(result.results || []);
+        setData(result.results || result.items || []);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -30,6 +39,14 @@ const Cards = ({ apiEndpoint }) => {
 
     fetchData();
   }, [apiEndpoint]);
+
+  const handleBookmark = (movie) => {
+    const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+    if (!bookmarks.some((bookmark) => bookmark.id === movie.id)) {
+      bookmarks.push(movie);
+      localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -50,6 +67,17 @@ const Cards = ({ apiEndpoint }) => {
               <p className="card-rating">
                 <i className="fas fa-star"></i> {item.vote_average}
               </p>
+              <div className="card-actions">
+                <button
+                  className="card-button"
+                  onClick={() => handleBookmark(item)}
+                >
+                  <i className="fas fa-bookmark"></i> Bookmark
+                </button>
+                <button className="card-button">
+                  <i className="fas fa-download"></i> Download
+                </button>
+              </div>
             </div>
           </div>
         ))

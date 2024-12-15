@@ -1,18 +1,46 @@
-import "../Styles/Trailer.css";
+import React, { useState, useEffect } from "react";
+import Layout from "../Pages/Layout/Layout";
+import "../Styles/Cards.css";
+
 const Bookmarked = () => {
+  const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
+
+  useEffect(() => {
+    const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+    setBookmarkedMovies(bookmarks);
+  }, []);
+
   return (
-    <div className="trailer-container">
-      <iframe
-        width="300"
-        height="196"
-        src="https://www.youtube.com/embed/3_y2j72Cfe4?si=Fbi_eVuO5NZr5kBh&amp;controls=0"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-      ></iframe>
-    </div>
+    <Layout>
+      <h1>Bookmarked Movies</h1>
+      <div className="cards-container">
+        {bookmarkedMovies.length > 0 ? (
+          bookmarkedMovies.map((item) => (
+            <div key={item.id} className="card">
+              <img
+                src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                alt={item.original_title}
+                className="card-image"
+              />
+              <div className="card-content">
+                <h3 className="card-title">{item.title}</h3>
+                <p className="card-rating">
+                  <i className="fas fa-star"></i> {item.vote_average}
+                </p>
+                <div className="card-actions">
+                  <button className="card-button">
+                    <i className="fas fa-download"></i> Download
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div>No bookmarks found.</div>
+        )}
+      </div>
+    </Layout>
   );
 };
+
 export default Bookmarked;
