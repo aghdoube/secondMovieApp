@@ -61,7 +61,12 @@ const SideMenu = () => {
           <a>Streaming Services</a>
           <ul>
             <li>
-              <a href="#" className="streaming-service">
+              <a
+                href="https://www.netflix.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="streaming-service"
+              >
                 <img
                   src={netflixLogo}
                   alt="Netflix"
@@ -71,7 +76,12 @@ const SideMenu = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="streaming-service">
+              <a
+                href="https://www.youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="streaming-service"
+              >
                 <img
                   src={youtubeLogo}
                   alt="Youtube"
@@ -81,7 +91,12 @@ const SideMenu = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="streaming-service">
+              <a
+                href="https://www.primevideo.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="streaming-service"
+              >
                 <img
                   src={primeLogo}
                   alt="Amazon Prime"
@@ -91,7 +106,12 @@ const SideMenu = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="streaming-service">
+              <a
+                href="https://tv.apple.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="streaming-service"
+              >
                 <img src={tvLogo} alt="AppleTv" className="streaming-logo" />
                 AppleTv
               </a>
