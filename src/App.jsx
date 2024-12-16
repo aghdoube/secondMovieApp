@@ -9,6 +9,8 @@ import TVShows from "./Pages/Views/TvShows";
 import Downloaded from "./Pages/Library/Downloaded";
 import Community from "./Pages/Menu/Community";
 import ComingSoon from "./Pages/Menu/ComingSoon";
+import Help from "./Pages/SettingsHelp/Help";
+import Settings from "./Pages/SettingsHelp/Settings";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/downloaded" element={<Downloaded />} />
           <Route path="/community" element={<Community />} />
           <Route path="/coming-soon" element={<ComingSoon />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/help" element={<Help />} />
 
           <Route path="/tv-shows" element={<TVShows />} />
         </Routes>
