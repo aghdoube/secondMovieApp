@@ -44,20 +44,11 @@ const SideMenu = () => {
           </a>
           <ul>
             <li>
-              <Link to="/recent">
-                <i className="fas fa-clock"></i> Recent
-              </Link>
-            </li>
-            <li>
               <Link to="/bookmarked">
                 <i className="fas fa-bookmark"></i> Bookmarked
               </Link>
             </li>
-            <li>
-              <Link to="/top-rated">
-                <i className="fas fa-star"></i> Top rated
-              </Link>
-            </li>
+
             <li>
               <Link to="/downloaded">
                 <i className="fas fa-download"></i> Downloaded

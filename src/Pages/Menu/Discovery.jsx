@@ -26,31 +26,29 @@ const Discovery = () => {
 
   return (
     <Layout>
-      <div className="flex-grow p-4">
-        <div className="discovery-container">
-          <h1 className="text-2xl font-bold mb-4">Discovery Page</h1>
-          <div className="form-control w-full max-w-md flex space-x-2">
-            <input
-              className="input input-bordered flex-grow"
-              type="text"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                console.log("Updated search query:", e.target.value);
-              }}
-            />
-            <button className="btn btn-primary" onClick={handleSearch}>
-              Search
-            </button>
-          </div>
-          {query && (
-            <div className="mt-4">
-              <p className="text-lg">Search results for: {query}</p>
-              <Cards apiEndpoint={searchApiEndpoint} />
-            </div>
-          )}
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <h1 className="text-3xl font-bold mb-4">Discovery Page</h1>
+        <div className="flex items-center space-x-4">
+          <input
+            className="input input-bordered w-full max-w-xs"
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              console.log("Updated search query:", e.target.value);
+            }}
+          />
+          <button className="btn btn-primary" onClick={handleSearch}>
+            Search
+          </button>
         </div>
+        {query && (
+          <div className="mt-4">
+            <p className="text-lg">Search results for: {query}</p>
+            <Cards apiEndpoint={searchApiEndpoint} />
+          </div>
+        )}
       </div>
     </Layout>
   );

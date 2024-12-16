@@ -5,8 +5,8 @@ import "../Styles/Hero.css";
 
 import Trailer from "./Trailer";
 
-import Bookmarked from "./Bookmarked";
-import TopRated from "./TopRated";
+import Bookmarked from "../Pages/Library/Bookmarked";
+
 import Download from "./Download";
 
 const SideMenuRight = () => {
@@ -54,14 +54,6 @@ const SideMenuRight = () => {
               <Trailer />
             </li>
 
-            <li>
-              <a>
-                <i className="fas fa-star"></i> TOP RATED
-              </a>
-            </li>
-            <li>
-              <TopRated />
-            </li>
             <li>
               <a>
                 <i className="fas fa-download"></i> Downloaded
